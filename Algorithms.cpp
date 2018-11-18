@@ -111,8 +111,8 @@ cout << "Starting table!" << endl;
 		this->table[c][0].filled=true;
 	}
 #if DEBUG
-cout << "Completed table!" << endl;
 this->print();
+cout << "Completed table!" << endl;
 #endif
 }
 
