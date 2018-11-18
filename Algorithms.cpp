@@ -165,6 +165,24 @@ cout << endl;
 #endif
 }
 
+Algorithm::Algorithm(const Algorithm &o){
+#if DEBUG
+cout << "Copying Algorithm Object..." << endl;
+#endif
+	this->size=o.size;
+	this->items = new Item[this->size];
+	for(unsigned int i=0; i<this->size; i++)
+		this->items[i]=Item(o.items[i]);
+	this->capacity=o.capacity;
+	this->table=dTable(this->size, this->capacity);
+#if DEBUG
+cout << "Coppied Algorithm Object!" << endl;
+for(unsigned int i=0; i<size; i++)
+	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") ";
+cout << endl; 
+#endif
+}
+
 Algorithm::Algorithm(){
 #if DEBUG
 cout << "Creating empty (invalid) Algorithm Object..." << endl;

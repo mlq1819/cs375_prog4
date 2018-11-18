@@ -41,19 +41,21 @@ class dTable{
 
 class Algorithm{
 	private:
-		Item * items;
-		size_t size;
-		unsigned int capacity;
-		dTable table;
 		unsigned int getMaxPossible() const;
 		unsigned int getMaxPossible(unsigned int) const;
 		unsigned int greedy2_helper(unsigned int) const;
 		unsigned int backtrack_helper(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 		unsigned int dynamic_helper(unsigned int, unsigned int);
 		unsigned int dGet(unsigned int, unsigned int);
+	protected:
+		Item * items;
+		size_t size;
+		unsigned int capacity;
+		dTable table;
 	public:
 		Algorithm(Item *, size_t, unsigned int);
 		Algorithm(); //for runtime purposes
+		Algorithm(const Algorithm &o);
 		size_t getSize() const {return this->size;};
 		unsigned int getCapacity() const {return this->capacity;};
 		unsigned int greedy1();
