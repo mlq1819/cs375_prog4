@@ -128,18 +128,18 @@ void dTable::print() const {
 	for(unsigned int c=this->capacity; c>=0; c--){
 		for(unsigned int n=0; n<this->size; n++){
 			if(this->table[c][n].filled)
-				cout << "<" << this->table[c][n].entry << "," << c << ">  ";
+				cout << "<" << this->table[c][n].entry << "," << c << ">\t";
 			else
-				cout << "<N,N>  ";
+				cout << "<N,N>\t ";
 			if(n==0)
-				cout << "||  ";
+				cout << "||\t ";
 		}
 		cout << endl;
 		if(c==this->capacity){
 			for(unsigned int n=0; n<this->size;n++){
-				cout << "===== ";
+				cout << "=====\t ";
 				if(n==0)
-					cout << "++ ";
+					cout << "++\t ";
 			}
 			cout << endl;
 		}
