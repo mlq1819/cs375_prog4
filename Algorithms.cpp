@@ -128,6 +128,9 @@ cout << "In dTable's destructor! Adiós!" << endl;
 
 void dTable::print() const {
 	cout << endl;
+#if DEBUG
+cout << "In dTable::print()!" << endl;
+#endif
 	for(unsigned int c=0; c<this->capacity+1; k++){
 		if(c==this->capacity){
 			for(unsigned int n=0; n<this->size;n++){
