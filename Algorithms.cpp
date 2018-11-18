@@ -128,7 +128,8 @@ cout << "In dTable's destructor! Adiós!" << endl;
 
 void dTable::print() const {
 	cout << endl;
-	for(unsigned int c=this->capacity; c>=0; c--){
+	for(unsigned int k=0; k<=this->capacity+1; k++){
+		unsigned int c=this->capacity+1-k;
 		for(unsigned int n=0; n<this->size; n++){
 			if(this->table[c][n].filled)
 				cout << "<" << this->table[c][n].entry << "," << c << ">\t";
@@ -147,7 +148,7 @@ void dTable::print() const {
 			cout << endl;
 		}
 	}
-	cout << "END\n" << endl;
+	cout << "\n" << endl;
 }
 
 Algorithm::Algorithm(Item * items, size_t size, unsigned int capacity){
