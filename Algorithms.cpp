@@ -131,7 +131,7 @@ void dTable::print() const {
 #if DEBUG
 cout << "In dTable::print()!" << endl;
 #endif
-	for(unsigned int c=0; c<this->capacity+1; k++){
+	for(unsigned int c=0; c<this->capacity+1; c++){
 		if(c==this->capacity){
 			for(unsigned int n=0; n<this->size;n++){
 				cout << "=====\t ";
