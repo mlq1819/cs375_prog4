@@ -96,7 +96,7 @@ dTable::dTable(){
 
 dTable::dTable(size_t size, unsigned int cap){
 #if DEBUG
-cout << "Starting table!" << endl;
+cout << "Starting table..." << endl;
 #endif
 	this->size=size+1;
 	this->capacity=cap;
@@ -117,6 +117,9 @@ cout << "Completed table!" << endl;
 }
 
 dTable::dTable(const dTable &o){
+#if DEBUG
+cout << "Copying table..." << endl;
+#endif
 	this->size=o.size;
 	this->capacity=o.capacity;
 	this->table=(dEntry **) malloc((capacity+1)*sizeof(void *));
@@ -128,6 +131,9 @@ dTable::dTable(const dTable &o){
 			this->table[c][n].entry=o.table[c][n].entry;
 		}
 	}
+#if DEBUG
+cout << "Copied table!" << endl;
+#endif
 }
 
 dTable::~dTable(){
@@ -147,9 +153,6 @@ cout << "Adiós!" << endl;
 
 void dTable::print() const {
 	cout << endl;
-#if DEBUG
-cout << "In dTable::print()!" << endl;
-#endif
 	for(unsigned int c=0; c<this->capacity+1; c++){
 		if(c==this->capacity){
 			for(unsigned int n=0; n<this->size;n++){
@@ -202,9 +205,6 @@ cout << "Copying Algorithm Object..." << endl;
 	this->table=dTable(o.table);
 #if DEBUG
 cout << "Coppied Algorithm Object!" << endl;
-for(unsigned int i=0; i<size; i++)
-	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") ";
-cout << endl; 
 #endif
 }
 
