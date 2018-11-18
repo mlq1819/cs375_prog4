@@ -116,6 +116,20 @@ cout << "Completed table!" << endl;
 #endif
 }
 
+dTable::dTable(const dTable &o){
+	this->size=o.size;
+	this->capacity=o.capacity;
+	this->table=(dEntry **) malloc((capacity+1)*sizeof(void *));
+	for(unsigned int c=0; c<this->capacity+1; c++){
+		this->table[c] = (dEntry *) malloc(this->size*sizeof(void *));
+		for(unsigned int n=0; n<this->size; n++){
+			this->table[c][n]=dEntry();
+			this->table[c][n].filled=o.table[c][n].filled;
+			this->table[c][n].entry=o.table[c][n].entry;
+		}
+	}
+}
+
 dTable::~dTable(){
 #if DEBUG
 cout << "In dTable's destructor!" << endl;
@@ -185,7 +199,7 @@ cout << "Copying Algorithm Object..." << endl;
 	for(unsigned int i=0; i<this->size; i++)
 		this->items[i]=Item(o.items[i]);
 	this->capacity=o.capacity;
-	this->table=dTable(this->size, this->capacity);
+	this->table=dTable(o.table);
 #if DEBUG
 cout << "Coppied Algorithm Object!" << endl;
 for(unsigned int i=0; i<size; i++)

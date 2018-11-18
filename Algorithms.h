@@ -32,6 +32,7 @@ class dTable{
 		public:
 		dTable(size_t, unsigned int);
 		dTable(); //for compilation reasons
+		dTable(const dTable &);
 		~dTable();
 		dEntry ** table;
 		size_t size;
