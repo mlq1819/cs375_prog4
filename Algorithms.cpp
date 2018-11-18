@@ -88,11 +88,6 @@ dEntry::dEntry(){
 	this->entry=0;
 }
 
-bool dEntry::operator=(const dEntry &o){
-	this->filled=o.filled;
-	this->entry=o.entry;
-}
-
 dTable::dTable(size_t size, unsigned int cap){
 	this->size=size+1;
 	this->capacity=cap;
@@ -110,8 +105,6 @@ dTable::dTable(size_t size, unsigned int cap){
 
 dTable::~dTable(){
 	for(unsigned int c=0; c<this->capacity+1; c++){
-		for(unsigned int n=0; n<this-size; n++)
-			delete(this->table[c][n]);
 		free(this->table[c])
 	}
 	free(this->table);
@@ -279,7 +272,7 @@ unsigned int Algorithm::dynamic_helper(unsigned int n, unsigned int c){
 	if(w<=c){
 		this->table.table[c][n].entry=max(dGet(n-1, c+w)+p, dGet(n-1, c));
 	} else {
-		this->table.table[c][n]=dGet(n-1,c);
+		this->table.table[c][n].entry=dGet(n-1,c);
 	}
 	return this->table.table[c][n].entry;
 }

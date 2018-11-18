@@ -26,7 +26,6 @@ class dEntry{
 		dEntry();
 		bool filled;
 		unsigned int entry;
-		bool operator=(const dEntry &);
 };
 
 class dTable{
