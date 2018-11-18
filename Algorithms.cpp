@@ -91,7 +91,7 @@ dEntry::dEntry(){
 dTable::dTable(){
 	this->size=0;
 	this->capacity=0;
-	this->table==NULL;
+	this->table=NULL;
 }
 
 dTable::dTable(size_t size, unsigned int cap){

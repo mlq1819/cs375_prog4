@@ -50,6 +50,9 @@ int main(int argc, char ** argv){
 	size_t idx = 0;
 	reader.start();
 	do{
+#if DEBUG
+cout << "Starting/Continuing Reading..." << endl;
+#endif
 		nums[nums.size()-1] = stoi(reader.current(), &idx, 10);
 		idx++;
 		capacities[capacities.size()-1] = stoi(reader.current().substr(idx, -1), NULL, 10);
