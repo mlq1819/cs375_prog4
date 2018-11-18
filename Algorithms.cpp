@@ -92,8 +92,9 @@ dTable::dTable(size_t size, unsigned int cap){
 	this->size=size+1;
 	this->capacity=cap;
 	this->table = new dEntry[this->capacity+1][this->size];
+	
 	for(unsigned int c=0; c<this->capacity+1; c++){
-		if(c==this->capacity)
+		if(c==this->capacity)x
 			for(unsigned int n=0; n<this->size; n++)
 				this->table[c][n].filled=true;
 		this->table[c][0].filled=true;
@@ -127,7 +128,7 @@ Algorithm::Algorithm(Item * items, size_t size, unsigned int capacity){
 		this->items[i]=Item(items[i]);
 	this->size=size;
 	this->capacity=capacity;
-	this->table=dtable();
+	this->table=dTable(this->size, this->capacity);
 #if DEBUG
 cout << "Created Algorithm Object" << endl;
 for(unsigned int i=0; i<size; i++)
@@ -260,18 +261,18 @@ unsigned int Algorithm::dynamic_helper(unsigned int n, unsigned int c){
 	w=this->items[n].getWeight();
 	p=this->items[n].getProfit();
 	if(w<=c){
-		this->table[c][n].entry=max(dGet(n-1, c+w)+p, dGet(n-1, c));
+		this->table.table[c][n].entry=max(dGet(n-1, c+w)+p, dGet(n-1, c));
 	} else {
-		this->table[c][n]=dGet(n-1,c);
+		this->table.table[c][n]=dGet(n-1,c);
 	}
-	return this->table[c][n].entry;
+	return this->table.table[c][n].entry;
 }
 
 unsigned int Algorithm::dGet(unsigned int n, unsigned int c){
 	if(c>this->table.capacity+1){
 		return 0;
 	}
-	if(!this->table[c][n].filled)
+	if(!this->table.table[c][n].filled)
 		return dynamic_helper(n,c);
-	return this->table[c][n].entry;
+	return this->table.table[c][n].entry;
 }
