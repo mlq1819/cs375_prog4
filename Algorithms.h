@@ -26,7 +26,7 @@ class dEntry{
 		dEntry();
 		bool filled;
 		unsigned int entry;
-}
+};
 
 class dTable{
 		public:
@@ -35,7 +35,7 @@ class dTable{
 		size_t size;
 		unsigned int capacity;
 		void print() const;
-}
+};
 
 class Algorithm{
 	private:
