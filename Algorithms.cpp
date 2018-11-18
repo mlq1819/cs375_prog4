@@ -88,6 +88,12 @@ dEntry::dEntry(){
 	this->entry=0;
 }
 
+dTable::dTable(){
+	this->size=0;
+	this->capacity=0;
+	this->table==NULL;
+}
+
 dTable::dTable(size_t size, unsigned int cap){
 	this->size=size+1;
 	this->capacity=cap;

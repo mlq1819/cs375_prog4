@@ -31,6 +31,7 @@ class dEntry{
 class dTable{
 		public:
 		dTable(size_t, unsigned int);
+		dTable(); //for compilation reasons
 		~dTable();
 		dEntry ** table;
 		size_t size;
