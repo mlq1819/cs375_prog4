@@ -208,6 +208,9 @@ cout << "Copying Algorithm Object..." << endl;
 	for(unsigned int i=0; i<this->size; i++)
 		this->items[i]=Item(o.items[i]);
 	this->capacity=o.capacity;
+#if DEBUG
+o.table.print();
+#endif
 	this->table=dTable(o.table);
 #if DEBUG
 cout << "Coppied Algorithm Object!" << endl;
