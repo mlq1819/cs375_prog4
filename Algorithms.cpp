@@ -90,20 +90,31 @@ dEntry::dEntry(){
 
 bool dEntry::operator=(const dEntry &o){
 	this->filled=o.filled;
-	this->entyr=o.entry;
+	this->entry=o.entry;
 }
 
 dTable::dTable(size_t size, unsigned int cap){
 	this->size=size+1;
 	this->capacity=cap;
-	this->table = new dEntry[this->capacity+1][this->size];
-	
+	this->table = (dEntry **) malloc((capacity+1)*sizeof(void *));
 	for(unsigned int c=0; c<this->capacity+1; c++){
-		if(c==this->capacity)
-			for(unsigned int n=0; n<this->size; n++)
+		this->table[c] = (dEntry *) malloc(this->size*sizeof(void *));
+		for(unsigned int n=0; n<this->size; n++){
+			this->table[c][n]=dEntry();
+			if(c==this->capacity)
 				this->table[c][n].filled=true;
+		}
 		this->table[c][0].filled=true;
 	}
+}
+
+dTable::~dTable(){
+	for(unsigned int c=0; c<this->capacity+1; c++){
+		for(unsigned int n=0; n<this-size; n++)
+			delete(this->table[c][n]);
+		free(this->table[c])
+	}
+	free(this->table);
 }
 
 void dTable::print() const {
