@@ -125,7 +125,7 @@ dTable::~dTable(){
 
 void dTable::print() const {
 	cout << "\n" << endl;
-	for(unsigned int c=0; c<this->capacity+1; c++){
+	for(unsigned int c=this->capacity; c>=0; c--){
 		for(unsigned int n=0; n<this->size; n++){
 			if(this->table[c][n].filled)
 				cout << "<" << this->table[c][n].entry << "," << c << ">  ";
