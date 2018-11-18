@@ -125,20 +125,20 @@ dTable::~dTable(){
 
 void dTable::print() const {
 	cout << "\n" << endl;
-	for(unsigned int j=0; j<this->capacity+1; j++){
-		for(unsigned int i=0; i<this->size; i++){
-			if(this->table[j][i].filled)
-				cout << "<" << this->table[j][i].entry << "," << j << "> ";
+	for(unsigned int c=0; c<this->capacity+1; c++){
+		for(unsigned int n=0; n<this->size; n++){
+			if(this->table[c][n].filled)
+				cout << "<" << this->table[c][n].entry << "," << c << ">  ";
 			else
-				cout << "<N,N> ";
-			if(i==0)
-				cout << "|| ";
+				cout << "<N,N>  ";
+			if(n==0)
+				cout << "||  ";
 		}
 		cout << endl;
-		if(j==0){
-			for(unsigned int i=0; i<this->size;i++){
+		if(c==this->capacity){
+			for(unsigned int n=0; n<this->size;n++){
 				cout << "===== ";
-				if(i==0)
+				if(n==0)
 					cout << "++ ";
 			}
 			cout << endl;
