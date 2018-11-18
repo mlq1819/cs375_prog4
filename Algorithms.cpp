@@ -118,14 +118,17 @@ cout << "Completed table!" << endl;
 
 dTable::~dTable(){
 #if DEBUG
-cout << "In dTable's destructor! Adiós!" << endl;
+cout << "In dTable's destructor!" << endl;
 #endif
 	if(this->table!=NULL){
-		for(unsigned int c=0; c<this->capacity+1; c++){
-			free(this->table[c]);
-		}
+		for(unsigned int c=0; c<this->capacity+1; c++)
+			if(this->table[c]!=NULL)
+				free(this->table[c]);
 		free(this->table);
 	}
+#if DEBUG
+cout << "Adiós!" << endl;
+#endif
 }
 
 void dTable::print() const {
