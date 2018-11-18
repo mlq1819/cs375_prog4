@@ -105,7 +105,7 @@ dTable::dTable(size_t size, unsigned int cap){
 
 dTable::~dTable(){
 	for(unsigned int c=0; c<this->capacity+1; c++){
-		free(this->table[c])
+		free(this->table[c]);
 	}
 	free(this->table);
 }
