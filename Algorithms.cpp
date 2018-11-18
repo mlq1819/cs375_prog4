@@ -95,6 +95,9 @@ dTable::dTable(){
 }
 
 dTable::dTable(size_t size, unsigned int cap){
+#if DEBUG
+cout << "Starting table!" << endl;
+#endif
 	this->size=size+1;
 	this->capacity=cap;
 	this->table = (dEntry **) malloc((capacity+1)*sizeof(void *));
@@ -107,6 +110,10 @@ dTable::dTable(size_t size, unsigned int cap){
 		}
 		this->table[c][0].filled=true;
 	}
+#if DEBUG
+cout << "Completed table!" << endl;
+this->print();
+#endif
 }
 
 dTable::~dTable(){
@@ -120,7 +127,10 @@ void dTable::print() const {
 	cout << "\n" << endl;
 	for(unsigned int j=0; j<this->capacity+1; j++){
 		for(unsigned int i=0; i<this->size; i++){
-			cout << "<" << this->table[j][i].entry << "," << j << "> ";
+			if(this->table[j][i].filled)
+				cout << "<" << this->table[j][i].entry << "," << j << "> ";
+			else
+				cout << "<N,N> ";
 			if(i==0)
 				cout << "|| ";
 		}
