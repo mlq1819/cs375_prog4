@@ -11,7 +11,7 @@
 #include "Algorithms.h"
 #define PRESORT true
 #ifndef DEBUG
-#define DEBUG false
+#define DEBUG true
 #endif
 
 using namespace std;

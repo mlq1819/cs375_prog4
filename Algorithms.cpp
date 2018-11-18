@@ -83,12 +83,51 @@ bool isSorted(const Item * A, size_t size){
 	return true;
 }
 
+dEntry::dEntry(){
+	this->filled=false;
+	this->entry=0;
+}
+
+dTable::dTable(size_t size, unsigned int cap){
+	this->size=size+1;
+	this->capacity=cap;
+	this->table = new dEntry[this->capacity+1][this->size];
+	for(unsigned int c=0; c<this->capacity+1; c++){
+		if(c==this->capacity)
+			for(unsigned int n=0; n<this->size; n++)
+				this->table[c][n].filled=true;
+		this->table[c][0].filled=true;
+	}
+}
+
+void dTable::print() const {
+	cout << "\n" << endl;
+	for(unsigned int j=0; j<this->capacity+1; j++){
+		for(unsigned int i=0; i<this->size; i++){
+			cout << "<" << this->table[j][i].entry << "," << j << "> ";
+			if(i==0)
+				cout << "|| ";
+		}
+		cout << endl;
+		if(j==0){
+			for(unsigned int i=0; i<this->size;i++){
+				cout << "===== ";
+				if(i==0)
+					cout << "++ ";
+			}
+			cout << endl;
+		}
+	}
+	cout << endl;
+}
+
 Algorithm::Algorithm(Item * items, size_t size, unsigned int capacity){
 	this->items = new Item[size];
 	for(unsigned int i=0; i<size; i++)
 		this->items[i]=Item(items[i]);
 	this->size=size;
 	this->capacity=capacity;
+	this->table=dtable();
 #if DEBUG
 cout << "Created Algorithm Object" << endl;
 for(unsigned int i=0; i<size; i++)
@@ -204,5 +243,35 @@ if(max(take, cur_profit, leave)==cur_profit)
 }
 
 unsigned int Algorithm::dynamic(){
+#if DEBUG
+cout << "In dynamic()" << endl;
+#endif
+	if(!isSorted(this->items, this->size))
+		quicksort(this->items, 0, this->size);
+	unsigned int temp = dynamic_helper(this->table.size-1, 0);
+#if DEBUG
+this->table.print();
+#endif
+	return temp;
+}
+
+unsigned int Algorithm::dynamic_helper(unsigned int n, unsigned int c){
+	unsigned int w,p;
+	w=this->items[n].getWeight();
+	p=this->items[n].getProfit();
+	if(w<=c){
+		this->table[c][n].entry=max(dGet(n-1, c+w)+p, dGet(n-1, c));
+	} else {
+		this->table[c][n]=dGet(n-1,c);
+	}
 	
+}
+
+unsigned int Algorithm::dGet(unsigned int n, unsigned int c){
+	if(c>this->table.capacity+1){
+		return 0;
+	}
+	if(!this->table[c][n].filled)
+		return dynamic_helper(n,c);
+	return this->table[c][n].entry;
 }
