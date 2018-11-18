@@ -88,13 +88,18 @@ dEntry::dEntry(){
 	this->entry=0;
 }
 
+bool dEntry::operator=(const dEntry &o){
+	this->filled=o.filled;
+	this->entyr=o.entry;
+}
+
 dTable::dTable(size_t size, unsigned int cap){
 	this->size=size+1;
 	this->capacity=cap;
 	this->table = new dEntry[this->capacity+1][this->size];
 	
 	for(unsigned int c=0; c<this->capacity+1; c++){
-		if(c==this->capacity)x
+		if(c==this->capacity)
 			for(unsigned int n=0; n<this->size; n++)
 				this->table[c][n].filled=true;
 		this->table[c][0].filled=true;
