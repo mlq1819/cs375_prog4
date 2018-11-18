@@ -120,10 +120,12 @@ dTable::~dTable(){
 #if DEBUG
 cout << "In dTable's destructor! Adiós!" << endl;
 #endif
-	for(unsigned int c=0; c<this->capacity+1; c++){
-		free(this->table[c]);
+	if(this->table!=NULL){
+		for(unsigned int c=0; c<this->capacity+1; c++){
+			free(this->table[c]);
+		}
+		free(this->table);
 	}
-	free(this->table);
 }
 
 void dTable::print() const {
