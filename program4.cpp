@@ -76,6 +76,9 @@ cout << "Read item: p=" << p << ";w=" << w << endl;
 quicksort(items, 0, nums[nums.size()-1]);
 #endif
 		algs.push_back(Algorithm(items, (unsigned int) nums[nums.size()-1], (unsigned int) capacities[capacities.size()-1]));
+#if DEBUG
+cout << "This is a test!" << endl;
+#endif
 	} while(!reader.atEnd());
 	for(unsigned int i=0; i<algs.size(); i++){
 		unsigned int computed_profit = 0;
