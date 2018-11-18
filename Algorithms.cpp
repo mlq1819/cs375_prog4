@@ -124,7 +124,7 @@ dTable::~dTable(){
 }
 
 void dTable::print() const {
-	cout << "\n" << endl;
+	cout << endl;
 	for(unsigned int c=this->capacity; c>=0; c--){
 		for(unsigned int n=0; n<this->size; n++){
 			if(this->table[c][n].filled)
@@ -144,10 +144,13 @@ void dTable::print() const {
 			cout << endl;
 		}
 	}
-	cout << endl;
+	cout << "\n" << endl;
 }
 
 Algorithm::Algorithm(Item * items, size_t size, unsigned int capacity){
+#if DEBUG
+cout << "Creating Algorithm Object..." << endl;
+#endif
 	this->items = new Item[size];
 	for(unsigned int i=0; i<size; i++)
 		this->items[i]=Item(items[i]);
@@ -155,10 +158,23 @@ Algorithm::Algorithm(Item * items, size_t size, unsigned int capacity){
 	this->capacity=capacity;
 	this->table=dTable(this->size, this->capacity);
 #if DEBUG
-cout << "Created Algorithm Object" << endl;
+cout << "Created Algorithm Object!" << endl;
 for(unsigned int i=0; i<size; i++)
 	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") ";
 cout << endl; 
+#endif
+}
+
+Algorithm::Algorithm(){
+#if DEBUG
+cout << "Creating empty (invalid) Algorithm Object..." << endl;
+#endif
+	this->items=NULL;
+	this->size=0;
+	this->capacity=0;
+	this->table=dTable();
+#if DEBUG
+cout << "Created empty (invalid) Algorithm Object!" << endl;
 #endif
 }
 

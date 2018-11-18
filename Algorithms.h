@@ -53,6 +53,7 @@ class Algorithm{
 		unsigned int dGet(unsigned int, unsigned int);
 	public:
 		Algorithm(Item *, size_t, unsigned int);
+		Algorithm(); //for runtime purposes
 		size_t getSize() const {return this->size;};
 		unsigned int getCapacity() const {return this->capacity;};
 		unsigned int greedy1();
