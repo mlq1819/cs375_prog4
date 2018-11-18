@@ -264,7 +264,7 @@ unsigned int Algorithm::dynamic_helper(unsigned int n, unsigned int c){
 	} else {
 		this->table[c][n]=dGet(n-1,c);
 	}
-	
+	return this->table[c][n].entry;
 }
 
 unsigned int Algorithm::dGet(unsigned int n, unsigned int c){
