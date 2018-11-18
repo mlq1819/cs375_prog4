@@ -147,7 +147,7 @@ void dTable::print() const {
 			cout << endl;
 		}
 	}
-	cout << "\n" << endl;
+	cout << "END\n" << endl;
 }
 
 Algorithm::Algorithm(Item * items, size_t size, unsigned int capacity){
