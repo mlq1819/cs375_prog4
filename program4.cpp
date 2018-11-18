@@ -92,7 +92,10 @@ quicksort(items, 0, nums[nums.size()-1]);
 		}
 		t = clock()-t;
 		float m = ((float) t)/CLOCKS_PER_SEC * 1000;
-		ofp << algs[i].getSize() << " " << computed_profit << " " << m << "\n";
+		if(mode==3)
+			ofp << "Dynamic Programming: " << algs[i].getSize() << " " << computed_profit << " " << m << "\n";
+		else
+			ofp << algs[i].getSize() << " " << computed_profit << " " << m << "\n";
 #if DEBUG
 cout << algs[i].getSize() << " " << computed_profit << " " << m << endl;
 #endif
