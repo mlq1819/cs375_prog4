@@ -130,13 +130,19 @@ cout << "\tCopying entries with capacity " << c << "..." << endl;
 		this->table[c] = (dEntry *) malloc(this->size*sizeof(void *));
 		for(unsigned int n=0; n<this->size; n++){
 #if DEBUG
-cout << "\t\tCopying entry " << n << " (" << o.table[c][n].entry << ")...";
+if(o.table[c][n].filled)
+	cout << "\t\tCopying entry " << n << " (" << o.table[c][n].entry << ")...";
+else
+	cout << "\t\tCopying entry " << n << " (N)...";
 #endif
 			this->table[c][n]=dEntry();
 			this->table[c][n].filled=o.table[c][n].filled;
 			this->table[c][n].entry=o.table[c][n].entry;
 #if DEBUG
-cout << "...(" << this->table[c][n].entry << ")..." << endl;;
+if(this->table[c][n].filled)
+	cout << "...(" << this->table[c][n].entry << ")..." << endl;;
+else
+	cout << "...(N)...";
 #endif
 		}
 	}
