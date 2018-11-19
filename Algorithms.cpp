@@ -125,16 +125,19 @@ cout << "Copying table..." << endl;
 	this->table=(dEntry **) malloc((this->capacity+1)*sizeof(void *));
 	for(unsigned int c=0; c<this->capacity+1; c++){
 #if DEBUG
-cout << "Copying entries with capacity " << c << "..." << endl;
+cout << "\tCopying entries with capacity " << c << "..." << endl;
 #endif
 		this->table[c] = (dEntry *) malloc(this->size*sizeof(void *));
 		for(unsigned int n=0; n<this->size; n++){
 #if DEBUG
-cout << "\tCopying entry " << n << " (" << o.table[c][n].entry << ")..." << endl;
+cout << "\t\tCopying entry " << n << " (" << o.table[c][n].entry << ")...";
 #endif
 			this->table[c][n]=dEntry();
 			this->table[c][n].filled=o.table[c][n].filled;
 			this->table[c][n].entry=o.table[c][n].entry;
+#if DEBUG
+cout << "...(" << this->table[c][n].entry << ")..." << endl;;
+#endif
 		}
 	}
 #if DEBUG
@@ -196,7 +199,6 @@ cout << "Created Algorithm Object!" << endl;
 for(unsigned int i=0; i<size; i++)
 	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") ";
 cout << endl;
-this->table->print();
 #endif
 }
 
@@ -209,9 +211,6 @@ cout << "Copying Algorithm Object..." << endl;
 	for(unsigned int i=0; i<this->size; i++)
 		this->items[i]=Item(o.items[i]);
 	this->capacity=o.capacity;
-#if DEBUG
-o.table->print();
-#endif
 	this->table=new dTable(*(o.table));
 #if DEBUG
 cout << "Coppied Algorithm Object!" << endl;
