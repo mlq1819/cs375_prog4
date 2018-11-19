@@ -225,7 +225,7 @@ cout << "Creating empty (invalid) Algorithm Object..." << endl;
 	this->items=NULL;
 	this->size=0;
 	this->capacity=0;
-	this->table=dTable();
+	this->table=new dTable();
 #if DEBUG
 cout << "Created empty (invalid) Algorithm Object!" << endl;
 #endif
