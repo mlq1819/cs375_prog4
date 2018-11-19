@@ -363,6 +363,9 @@ this->table->print();
 }
 
 unsigned int Algorithm::dynamic_helper(unsigned int n, unsigned int c){
+#if DEBUG
+cout << "dynamic_helper: at table[" << n << "][" << c << "]..." << endl;
+#endif
 	unsigned int w,p;
 	w=this->items[n].getWeight();
 	p=this->items[n].getProfit();
