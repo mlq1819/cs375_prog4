@@ -212,6 +212,9 @@ cout << "Copying Algorithm Object..." << endl;
 for(unsigned int i=0; i<size; i++)
 	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") ";
 cout << endl;
+for(unsigned int i=0; i<size; i++)
+	cout << "(" << o.items[i].getProfit() << "," << o.items[i].getWeight() << ") ";
+cout << endl;
 o.table.print();
 #endif
 	this->table=dTable(o.table);
