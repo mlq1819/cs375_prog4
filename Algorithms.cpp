@@ -363,12 +363,12 @@ unsigned int Algorithm::dynamic_helper(unsigned int n, unsigned int c){
 	if(w<=c){
 		this->table->table[c][n].entry=max(dGet(n-1, c+w)+p, dGet(n-1, c));
 #if DEBUG
-cout << "Set table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << end;
+cout << "table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << endl;
 #endif
 	} else {
 		this->table->table[c][n].entry=dGet(n-1,c);
 #if DEBUG
-cout << "Set table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << end;
+cout << "table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << endl;
 #endif
 	}
 	return this->table->table[c][n].entry;
