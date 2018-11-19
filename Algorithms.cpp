@@ -195,7 +195,8 @@ cout << "Creating Algorithm Object..." << endl;
 cout << "Created Algorithm Object!" << endl;
 for(unsigned int i=0; i<size; i++)
 	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") ";
-cout << endl; 
+cout << endl;
+this->table.print();
 #endif
 }
 
@@ -210,10 +211,10 @@ cout << "Copying Algorithm Object..." << endl;
 	this->capacity=o.capacity;
 #if DEBUG
 for(unsigned int i=0; i<size; i++)
-	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") ";
-cout << endl;
-for(unsigned int i=0; i<size; i++)
 	cout << "(" << o.items[i].getProfit() << "," << o.items[i].getWeight() << ") ";
+cout << "\n=====>" << endl;
+for(unsigned int i=0; i<size; i++)
+	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") ";
 cout << endl;
 o.table.print();
 #endif
