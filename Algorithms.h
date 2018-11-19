@@ -52,11 +52,12 @@ class Algorithm{
 		Item * items;
 		size_t size;
 		unsigned int capacity;
-		dTable table;
+		dTable * table;
 	public:
 		Algorithm(Item *, size_t, unsigned int);
 		Algorithm(); //for runtime purposes
 		Algorithm(const Algorithm &o);
+		~Algorithm();
 		size_t getSize() const {return this->size;};
 		unsigned int getCapacity() const {return this->capacity;};
 		unsigned int greedy1();

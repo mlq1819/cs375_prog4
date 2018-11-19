@@ -190,13 +190,13 @@ cout << "Creating Algorithm Object..." << endl;
 		this->items[i]=Item(items[i]);
 	this->size=size;
 	this->capacity=capacity;
-	this->table=dTable(this->size, this->capacity);
+	this->table = new dTable(this->size, this->capacity);
 #if DEBUG
 cout << "Created Algorithm Object!" << endl;
 for(unsigned int i=0; i<size; i++)
 	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") ";
 cout << endl;
-this->table.print();
+this->table->print();
 #endif
 }
 
@@ -210,12 +210,6 @@ cout << "Copying Algorithm Object..." << endl;
 		this->items[i]=Item(o.items[i]);
 	this->capacity=o.capacity;
 #if DEBUG
-for(unsigned int i=0; i<size; i++)
-	cout << "(" << o.items[i].getProfit() << "," << o.items[i].getWeight() << ") ";
-cout << "\n=====>" << endl;
-for(unsigned int i=0; i<size; i++)
-	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") ";
-cout << endl;
 o.table.print();
 #endif
 	this->table=dTable(o.table);
@@ -235,6 +229,13 @@ cout << "Creating empty (invalid) Algorithm Object..." << endl;
 #if DEBUG
 cout << "Created empty (invalid) Algorithm Object!" << endl;
 #endif
+}
+
+Algorithm::~Algorithm(){
+	delete this->table;
+	this->table=NULL;
+	delete[] this->items;
+	this->items=NULL;
 }
 
 unsigned int Algorithm::getMaxPossible() const {
@@ -349,9 +350,9 @@ cout << "In dynamic()" << endl;
 #endif
 	if(!isSorted(this->items, this->size))
 		quicksort(this->items, 0, this->size);
-	unsigned int temp = dynamic_helper(this->table.size-1, 0);
+	unsigned int temp = dynamic_helper(this->table->size-1, 0);
 #if DEBUG
-this->table.print();
+this->table->print();
 #endif
 	return temp;
 }
@@ -361,18 +362,18 @@ unsigned int Algorithm::dynamic_helper(unsigned int n, unsigned int c){
 	w=this->items[n].getWeight();
 	p=this->items[n].getProfit();
 	if(w<=c){
-		this->table.table[c][n].entry=max(dGet(n-1, c+w)+p, dGet(n-1, c));
+		this->table->table[c][n].entry=max(dGet(n-1, c+w)+p, dGet(n-1, c));
 	} else {
-		this->table.table[c][n].entry=dGet(n-1,c);
+		this->table->table[c][n].entry=dGet(n-1,c);
 	}
-	return this->table.table[c][n].entry;
+	return this->table->table[c][n].entry;
 }
 
 unsigned int Algorithm::dGet(unsigned int n, unsigned int c){
-	if(c>this->table.capacity+1){
+	if(c>this->table->capacity+1){
 		return 0;
 	}
-	if(!this->table.table[c][n].filled)
+	if(!this->table->table[c][n].filled)
 		return dynamic_helper(n,c);
-	return this->table.table[c][n].entry;
+	return this->table->table[c][n].entry;
 }
