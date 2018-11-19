@@ -362,8 +362,14 @@ unsigned int Algorithm::dynamic_helper(unsigned int n, unsigned int c){
 	p=this->items[n].getProfit();
 	if(w<=c){
 		this->table->table[c][n].entry=max(dGet(n-1, c+w)+p, dGet(n-1, c));
+#if DEBUG
+cout << "Set table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << end;
+#endif
 	} else {
 		this->table->table[c][n].entry=dGet(n-1,c);
+#if DEBUG
+cout << "Set table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << end;
+#endif
 	}
 	return this->table->table[c][n].entry;
 }
