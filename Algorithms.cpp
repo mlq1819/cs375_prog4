@@ -142,7 +142,7 @@ else
 if(this->table[c][n].filled)
 	cout << "...(" << this->table[c][n].entry << ")..." << endl;
 else
-	cout << "...(N)...";
+	cout << "...(N)..." << endl;
 #endif
 		}
 	}
