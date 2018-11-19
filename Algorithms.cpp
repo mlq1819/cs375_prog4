@@ -362,11 +362,13 @@ unsigned int Algorithm::dynamic_helper(unsigned int n, unsigned int c){
 	p=this->items[n].getProfit();
 	if(w<=c){
 		this->table->table[c][n].entry=max(dGet(n-1, c+w)+p, dGet(n-1, c));
+		this->table->table[c][n].filled=true;
 #if DEBUG
 cout << "table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << endl;
 #endif
 	} else {
 		this->table->table[c][n].entry=dGet(n-1,c);
+		this->table->table[c][n].filled=true;
 #if DEBUG
 cout << "table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << endl;
 #endif
