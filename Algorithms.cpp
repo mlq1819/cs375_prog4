@@ -140,7 +140,7 @@ else
 			this->table[c][n].entry=o.table[c][n].entry;
 #if DEBUG
 if(this->table[c][n].filled)
-	cout << "...(" << this->table[c][n].entry << ")..." << endl;;
+	cout << "...(" << this->table[c][n].entry << ")..." << endl;
 else
 	cout << "...(N)...";
 #endif
