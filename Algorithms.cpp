@@ -124,26 +124,11 @@ cout << "Copying table..." << endl;
 	this->capacity=o.capacity;
 	this->table=(dEntry **) malloc((this->capacity+1)*sizeof(void *));
 	for(unsigned int c=0; c<this->capacity+1; c++){
-#if DEBUG
-cout << "\tCopying entries with capacity " << c << "..." << endl;
-#endif
 		this->table[c] = (dEntry *) malloc(this->size*sizeof(void *));
 		for(unsigned int n=0; n<this->size; n++){
-#if DEBUG
-if(o.table[c][n].filled)
-	cout << "\t\tCopying entry " << n << " (" << o.table[c][n].entry << ")...";
-else
-	cout << "\t\tCopying entry " << n << " (N)...";
-#endif
 			this->table[c][n]=dEntry();
 			this->table[c][n].filled=o.table[c][n].filled;
 			this->table[c][n].entry=o.table[c][n].entry;
-#if DEBUG
-if(this->table[c][n].filled)
-	cout << "...(" << this->table[c][n].entry << ")..." << endl;
-else
-	cout << "...(N)..." << endl;
-#endif
 		}
 	}
 #if DEBUG
@@ -370,8 +355,22 @@ cout << "dynamic_helper: at table[" << c << "][" << n << "]..." << endl;
 	w=this->items[n].getWeight();
 	p=this->items[n].getProfit();
 	if(w<=c){
-		this->table->table[c][n].entry=max(dGet(n-1, c+w)+p, dGet(n-1, c));
-		this->table->table[c][n].filled=true;
+		unsigned int v1 = dGet(n-1, c);
+#if DEBUG
+cout << "v1=" << v1 << "..." << endl;
+#endif
+		unsigned int v2 = dGet(n-1, c+w)+p;
+#if DEBUG
+cout << "v2=" << v2 << "..." << endl;
+#endif
+		if(c+w>this->capacity){
+#if DEBUG
+cout << "c+w (" << c+w << ") > " << this->capacity << "; v1=0" << endl;
+#endif
+			v1=0;
+		}
+			this->table->table[c][n].entry=max(v1, v2);
+			this->table->table[c][n].filled=true;
 #if DEBUG
 cout << "table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << endl;
 #endif
