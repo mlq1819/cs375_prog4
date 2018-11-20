@@ -160,7 +160,7 @@ void dTable::print() const {
 	for(unsigned int c=0; c<this->capacity+1; c++){
 		if(c==this->capacity){
 			for(unsigned int n=0; n<this->size;n++){
-				cout << "=========\t ";
+				cout << "==========\t ";
 				if(n==0)
 					cout << "++\t ";
 			}
@@ -406,7 +406,7 @@ cout << "... (dGet [" << c << "][" << n << "]) got entry value " << toReturn << 
 		return toReturn;
 	}
 #if DEBUG
-cout << "table entry=" << this->table->table[c][n].entry << endl;
+cout << "table entry=" << this->table->table[c][n].entry << "\n" << endl;
 #endif
 	return this->table->table[c][n].entry;
 }
