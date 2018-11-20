@@ -360,7 +360,7 @@ cout << "dynamic_helper: at table[" << c << "][" << n << "]..." << endl;
 	p=this->items[n].getProfit();
 	if(w+c<=this->capacity){
 #if DEBUG
-cout << "<=\tw+c (" << w+c << ") <= " << this->capacity << endl;
+cout << "<=\tw+c (" << w << "+" << c << ") <= " << this->capacity << endl;
 #endif
 		unsigned int v1 = dGet(n-1, c);
 #if DEBUG
@@ -381,7 +381,7 @@ cout << "table[" << c << "][" << n << "] = " << this->table->table[c][n].entry <
 #endif
 	} else {
 #if DEBUG
-cout << ">\tw+c (" << w+c << ") > " << this->capacity << endl;
+cout << ">\tw+c (" << w << "+" << c << ") > " << this->capacity << endl;
 #endif
 		this->table->table[c][n].entry=dGet(n-1,c);
 		this->table->table[c][n].filled=true;
