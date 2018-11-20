@@ -357,11 +357,11 @@ cout << "dynamic_helper: at table[" << c << "][" << n << "]..." << endl;
 	if(w<=c){
 		unsigned int v1 = dGet(n-1, c);
 #if DEBUG
-cout << "v1=" << v1 << "..." << endl;
+cout << "<" << c << "," << n << "> v1=" << v1 << "..." << endl;
 #endif
 		unsigned int v2 = dGet(n-1, c+w)+p;
 #if DEBUG
-cout << "v2=" << v2 << "..." << endl;
+cout << "<" << c << "," << n << "> v2=" << v2 << "..." << endl;
 #endif
 		if(c+w>this->capacity){
 #if DEBUG
