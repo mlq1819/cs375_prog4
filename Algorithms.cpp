@@ -365,7 +365,11 @@ cout << "<" << c << "," << n << "> v1=" << v1 << "..." << endl;
 #if DEBUG
 cout << "<" << c << "," << n << "> v2=" << v2 << "..." << endl;
 #endif
-		this->table->table[c][n].entry=max(v1, v2);
+		unsigned int v3 = dGet(n, c+1);
+#if DEBUG
+cout << "<" << c << "," << n << "> v3=" << v3 << "..." << endl;
+#endif
+		this->table->table[c][n].entry=max(v1, v2, v3);
 		this->table->table[c][n].filled=true;
 #if DEBUG
 cout << "table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << endl;
