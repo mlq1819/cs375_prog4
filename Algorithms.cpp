@@ -354,7 +354,7 @@ cout << "dynamic_helper: at table[" << c << "][" << n << "]..." << endl;
 	unsigned int w,p;
 	w=this->items[n].getWeight();
 	p=this->items[n].getProfit();
-	if(w<=c){
+	if(w+c<=this->capacity){
 		unsigned int v1 = dGet(n-1, c);
 #if DEBUG
 cout << "<" << c << "," << n << "> v1=" << v1 << "..." << endl;
@@ -375,6 +375,9 @@ cout << "c+w (" << c+w << ") > " << this->capacity << "; v1=0" << endl;
 cout << "table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << endl;
 #endif
 	} else {
+#if DEBUG
+cout << "w+c (" << w+c << ")>" << this->capacity << endl;
+#endif
 		this->table->table[c][n].entry=dGet(n-1,c);
 		this->table->table[c][n].filled=true;
 #if DEBUG
@@ -400,7 +403,7 @@ cout << "entry not filled; filling table entry..." << endl;
 #endif
 		unsigned int toReturn = dynamic_helper(n,c);
 #if DEBUG
-cout << "... (dGets [" << c << "][" << n << "]) got entry value " << toReturn << endl;
+cout << "... (dGet [" << c << "][" << n << "]) got entry value " << toReturn << endl;
 #endif
 		return toReturn;
 	}
