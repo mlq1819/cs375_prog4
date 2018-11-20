@@ -152,7 +152,6 @@ cout << "Adiós!" << endl;
 }
 
 void dTable::print() const {
-	cout << endl;
 	for(unsigned int c=0; c<this->capacity+1; c++){
 		if(c==this->capacity){
 			for(unsigned int n=0; n<this->size;n++){
@@ -414,7 +413,7 @@ cout << "table entry=" << this->table->table[c][n].entry << endl;
 }
 
 void Algorithm::print() const {
-	cout << "<p,w>\t ||\t ";
+	cout << "\n<p,w>    \t ||\t ";
 	for(unsigned int i=0; i<this->size; i++)
 		cout << "<" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ">\t ";
 	cout << endl;
