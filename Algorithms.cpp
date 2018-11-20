@@ -386,10 +386,23 @@ cout << "table[" << c << "][" << n << "] = " << this->table->table[c][n].entry <
 }
 
 unsigned int Algorithm::dGet(unsigned int n, unsigned int c){
+#if DEBUG
+cout << "dGet called for [" << c << "][" << n << "]:\t ";
+#endif
 	if(c>this->table->capacity+1){
+#if DEBUG
+cout << "c (" << c << ") exceeds maximum capacity" << endl;
+#endif
 		return 0;
 	}
-	if(!this->table->table[c][n].filled)
+	if(!this->table->table[c][n].filled){
+#if DEBUG
+cout << "entry not filled; filling table entry..." << endl;
+#endif
 		return dynamic_helper(n,c);
+	}
+#if DEBUG
+cout << "table entry=" << this->table->table[c][n].entry << endl;
+#endif
 	return this->table->table[c][n].entry;
 }
