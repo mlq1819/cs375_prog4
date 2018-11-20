@@ -79,7 +79,8 @@ quicksort(items, 0, nums[nums.size()-1]);
 	} while(!reader.atEnd());
 	for(unsigned int i=0; i<algs.size(); i++){
 		unsigned int computed_profit = 0;
-		clock_t t = clock();
+		clock_t start, end;
+		start = clock();
 		switch(mode){
 			case 0:
 				computed_profit = algs[i].greedy1();
@@ -93,14 +94,14 @@ quicksort(items, 0, nums[nums.size()-1]);
 			case 3:
 				computed_profit = algs[i].dynamic();
 		}
-		t = clock()-t;
-		float m = ((float) t)/CLOCKS_PER_SEC * 1000;
+		end = clock();
+		double seconds = ((double) end-start)/CLOCKS_PER_SEC;
 		if(mode==3)
-			ofp << "Dynamic Programming: " << algs[i].getSize() << " " << computed_profit << " " << m << "\n";
+			ofp << "Dynamic Programming: " << algs[i].getSize() << " " << computed_profit << " " << seconds << "\n";
 		else
-			ofp << algs[i].getSize() << " " << computed_profit << " " << m << "\n";
+			ofp << algs[i].getSize() << " " << computed_profit << " " << seconds << "\n";
 #if DEBUG
-cout << algs[i].getSize() << " " << computed_profit << " " << m << endl;
+cout << algs[i].getSize() << " " << computed_profit << " " << seconds << endl;
 #endif
 	}
 	ofp.close();
