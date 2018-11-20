@@ -1,0 +1,36 @@
+#include "item.h"
+#include <iostream>
+
+using namespace std;
+
+Item::Item(const Item &o){
+	this->profit=o.getProfit();
+	this->weight=o.getWeight();
+}
+
+Item::Item(){
+	this->profit=0;
+	this->weight=0;
+}
+
+bool Item::operator==(const Item &o) const {
+	return this->respective()==o.respective();
+}
+
+bool Item::operator=(const Item &o){
+	this->profit=o.getProfit();
+	this->weight=o.getWeight();
+	return true;
+}
+
+bool Item::operator>(const Item &o) const {
+	return this->respective()>o.respective();
+}
+
+bool Item::operator<(const Item &o) const {
+	return this->respective()<o.respective();
+}
+
+void Item::print() const {
+	cout << "(" << this->respective() << ";" << this->profit << "," << this->weight << ") ";
+}
