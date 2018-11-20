@@ -363,17 +363,8 @@ cout << "dynamic_helper: at table[" << c << "][" << n << "]..." << endl;
 cout << "<=\tw+c (" << w << "+" << c << ") <= " << this->capacity << endl;
 #endif
 		unsigned int v1 = dGet(n-1, c);
-#if DEBUG
-cout << "<" << c << "," << n << "> v1=" << v1 << "..." << endl;
-#endif
 		unsigned int v2 = dGet(n-1, c+w)+p;
-#if DEBUG
-cout << "<" << c << "," << n << "> v2=" << v2 << "..." << endl;
-#endif
 		unsigned int v3 = dGet(n, c+1);
-#if DEBUG
-cout << "<" << c << "," << n << "> v3=" << v3 << "..." << endl;
-#endif
 		this->table->table[c][n].entry=max(v1, v2, v3);
 		this->table->table[c][n].filled=true;
 #if DEBUG
