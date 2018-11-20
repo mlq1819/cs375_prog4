@@ -356,8 +356,8 @@ unsigned int Algorithm::dynamic_helper(unsigned int n, unsigned int c){
 cout << "dynamic_helper: at table[" << c << "][" << n << "]..." << endl;
 #endif
 	unsigned int w,p;
-	w=this->items[n].getWeight();
-	p=this->items[n].getProfit();
+	w=this->items[n-1].getWeight();
+	p=this->items[n-1].getProfit();
 	if(w+c<=this->capacity){
 #if DEBUG
 cout << "<=\tw+c (" << w << "+" << c << ") <= " << this->capacity << endl;
