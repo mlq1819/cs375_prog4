@@ -354,6 +354,9 @@ cout << "dynamic_helper: at table[" << c << "][" << n << "]..." << endl;
 	w=this->items[n].getWeight();
 	p=this->items[n].getProfit();
 	if(w+c<=this->capacity){
+#if DEBUG
+cout << "<=\tw+c (" << w+c << ") <= " << this->capacity << endl;
+#endif
 		unsigned int v1 = dGet(n-1, c);
 #if DEBUG
 cout << "<" << c << "," << n << "> v1=" << v1 << "..." << endl;
@@ -362,20 +365,14 @@ cout << "<" << c << "," << n << "> v1=" << v1 << "..." << endl;
 #if DEBUG
 cout << "<" << c << "," << n << "> v2=" << v2 << "..." << endl;
 #endif
-		if(c+w>this->capacity){
-#if DEBUG
-cout << "c+w (" << c+w << ") > " << this->capacity << "; v1=0" << endl;
-#endif
-			v1=0;
-		}
-			this->table->table[c][n].entry=max(v1, v2);
-			this->table->table[c][n].filled=true;
+		this->table->table[c][n].entry=max(v1, v2);
+		this->table->table[c][n].filled=true;
 #if DEBUG
 cout << "table[" << c << "][" << n << "] = " << this->table->table[c][n].entry << endl;
 #endif
 	} else {
 #if DEBUG
-cout << "w+c (" << w+c << ")>" << this->capacity << endl;
+cout << ">\tw+c (" << w+c << ") > " << this->capacity << endl;
 #endif
 		this->table->table[c][n].entry=dGet(n-1,c);
 		this->table->table[c][n].filled=true;
