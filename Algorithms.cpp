@@ -53,7 +53,7 @@ void quicksort(Item * A, unsigned int low, unsigned int high){
 #if DEBUG
 cout << "Entering quicksort: (p/w;p,w)" << endl;
 for(unsigned int i=low; i<high; i++)
-	cout << "(" << A[i].respective() << ";" << A[i].getProfit() << "," << A[i].getWeight() << ") ";
+	A[i].print();
 cout << endl;
 #endif	
 	quicksort_helper(A,low,high-1);
@@ -61,7 +61,7 @@ cout << endl;
 #if DEBUG
 cout << "Exiting quicksort: (p/w;p,w)" << endl;
 for(unsigned int i=low; i<high; i++)
-	cout << "(" << A[i].respective() << ";" << A[i].getProfit() << "," << A[i].getWeight() << ") ";
+	A[i].print();
 cout << endl;
 #endif	
 }
@@ -416,6 +416,6 @@ cout << "table entry=" << this->table->table[c][n].entry << endl;
 void Algorithm::print() const {
 	cout << "\n<p,w>    \t ||\t ";
 	for(unsigned int i=0; i<this->size; i++)
-		cout << "<" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ">\t ";
+		this->items[i].print();
 	cout << endl;
 }

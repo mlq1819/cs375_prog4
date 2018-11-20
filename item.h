@@ -18,6 +18,7 @@ class Item{
 		bool operator<(const Item &) const;
 		bool operator>=(const Item &o) const {return !this->operator<(o);};
 		bool operator<=(const Item &o) const {return !this->operator>(o);};
+		void print() const;
 };
 
 #endif

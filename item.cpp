@@ -27,3 +27,7 @@ bool Item::operator>(const Item &o) const {
 bool Item::operator<(const Item &o) const {
 	return this->respective()<o.respective();
 }
+
+void Item::print() const {
+	cout << "(" << this->respective() << ";" << this->profit << "," << this->weight << ") ";
+}
