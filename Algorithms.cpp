@@ -398,7 +398,11 @@ cout << "c (" << c << ") exceeds maximum capacity" << endl;
 #if DEBUG
 cout << "entry not filled; filling table entry..." << endl;
 #endif
-		return dynamic_helper(n,c);
+		unsigned int toReturn = dynamic_helper(n,c);
+#if DEBUG
+cout << "... (dGets) got entry value " << toReturn << endl;
+#endif
+		return toReturn;
 	}
 #if DEBUG
 cout << "table entry=" << this->table->table[c][n].entry << endl;
