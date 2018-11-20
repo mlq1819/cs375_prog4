@@ -187,8 +187,7 @@ cout << "Creating Algorithm Object..." << endl;
 	this->table = new dTable(this->size, this->capacity);
 #if DEBUG
 cout << "Created Algorithm Object!" << endl;
-for(unsigned int i=0; i<size; i++)
-	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") ";
+this->print();
 cout << endl;
 #endif
 }
@@ -342,6 +341,7 @@ cout << "In dynamic()" << endl;
 		quicksort(this->items, 0, this->size);
 	unsigned int temp = dynamic_helper(this->table->size-1, 0);
 #if DEBUG
+this->print();
 this->table->print();
 #endif
 	return temp;
@@ -411,4 +411,11 @@ cout << "... (dGet [" << c << "][" << n << "]) got entry value " << toReturn << 
 cout << "table entry=" << this->table->table[c][n].entry << endl;
 #endif
 	return this->table->table[c][n].entry;
+}
+
+void Algorithm::print() const {
+	cout << "<p,w>\t ||\t ";
+	for(unsigned int i=0; i<this->size; i++)
+		cout << "<" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ">\t ";
+	cout << endl;
 }

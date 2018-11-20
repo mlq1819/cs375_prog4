@@ -64,6 +64,7 @@ class Algorithm{
 		unsigned int greedy2();
 		unsigned int backtrack();
 		unsigned int dynamic();
+		void print() const;
 };
 
 #endif
