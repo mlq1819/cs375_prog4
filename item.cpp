@@ -1,4 +1,7 @@
 #include "item.h"
+#include <iostream>
+
+using namespace std;
 
 Item::Item(const Item &o){
 	this->profit=o.getProfit();
