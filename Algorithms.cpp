@@ -3,13 +3,31 @@
 using namespace std;
 
 unsigned int max(unsigned int a, unsigned int b){
-	unsigned int max = a;
-	if(b>max)
-		max=b;
-	return max;
+	return max(a,b,0);
 }
 
 unsigned int max(unsigned int a, unsigned int b, unsigned int c){
+#if DEBUG
+cout << "max(";
+if(a>0){
+	cout << a;
+	if(b>0)
+		cout << ", " << b;
+	if(c>0)
+		cout << ", " << c;
+} else {
+	if(b>0){
+		cout << b;
+		if(c>0)
+			cout << ", " << c;
+	}
+	if(c>0)
+		cout << c;
+	else
+		cout << 0;
+}
+cout << ")" << endl;
+#endif
 	unsigned int max = a;
 	if(b>max)
 		max=b;
