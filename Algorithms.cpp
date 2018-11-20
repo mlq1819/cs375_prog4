@@ -400,7 +400,7 @@ cout << "entry not filled; filling table entry..." << endl;
 #endif
 		unsigned int toReturn = dynamic_helper(n,c);
 #if DEBUG
-cout << "... (dGets) got entry value " << toReturn << endl;
+cout << "... (dGets [" << c << "][" << n << "]) got entry value " << toReturn << endl;
 #endif
 		return toReturn;
 	}
