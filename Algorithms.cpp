@@ -9,19 +9,19 @@ unsigned int max(unsigned int a, unsigned int b){
 unsigned int max(unsigned int a, unsigned int b, unsigned int c){
 #if DEBUG
 cout << "max(";
-if(a>0){
+if(a!=0){
 	cout << a;
-	if(b>0)
+	if(b!=0)
 		cout << ", " << b;
-	if(c>0)
+	if(c!=0)
 		cout << ", " << c;
 } else {
-	if(b>0){
+	if(b!=0){
 		cout << b;
-		if(c>0)
+		if(c!=0)
 			cout << ", " << c;
 	}
-	if(c>0)
+	if(c!=0)
 		cout << c;
 	else
 		cout << 0;
