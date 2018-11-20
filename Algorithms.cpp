@@ -179,7 +179,7 @@ void dTable::print() const {
 		}
 		for(unsigned int n=0; n<this->size; n++){
 			if(this->table[c][n].filled)
-				cout << "<" << this->table[c][n].entry << ">[" << c << "][" << n << "]"\t";
+				cout << "<" << this->table[c][n].entry << ">[" << c << "][" << n << "]\t";
 			else
 				cout << "<N>[" << c << "][" << n << "]\t ";
 			if(n==0)
